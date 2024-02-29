@@ -1,0 +1,204 @@
+﻿<Window x:Class="EmployeeManagement.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmployeeManagement"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Background="#FF1D1B1B" 
+        Title="KitKat" 
+        Height="730" Width="1300"
+        MinHeight="365" MinWidth="650">
+    <WindowChrome.WindowChrome >
+        <WindowChrome  />
+    </WindowChrome.WindowChrome>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="256.2"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="29"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Border Grid.Row="1" Grid.ColumnSpan="2" BorderBrush="#474A51" BorderThickness="3, 0, 3, 3"/>
+
+        
+        <!--#region HEADER -->
+
+        <Border Grid.Row="0" Name="nameBorder" BorderBrush ="Black" Grid.RowSpan="2" Grid.ColumnSpan="2">
+
+            <DockPanel>
+
+                <Border Background="#474A51"  DockPanel.Dock="Top" Height="29" VerticalAlignment="Top">
+
+                    <DockPanel >
+
+                        <StackPanel Orientation="Horizontal" 
+                            DockPanel.Dock="Right" 
+                            Width="175" Height="29" 
+                            WindowChrome.IsHitTestVisibleInChrome="True" 
+                            FlowDirection="RightToLeft" VerticalAlignment="Top" 
+                            HorizontalAlignment="Right">
+
+                            <Border Name="close" 
+                            Width="47" Height="29" 
+                            Background="#474A51" 
+                            PreviewMouseUp="header_PreviewMouseUp"  
+                            PreviewMouseDown="header_PreviewMouseDown"  
+                            MouseLeave="header_MouseLeave"  
+                            MouseEnter="header_MouseEnter">
+
+                                <Label Content="✕" 
+                                HorizontalAlignment="Center" 
+                                Margin="0,1,0,0"  
+                                FontSize="14" 
+                                FontFamily="Arial" 
+                                Foreground="White"/>
+
+                            </Border>
+
+                            <Border Name="maxmin" 
+                            Width="47" Height="29" 
+                            Background="#474A51" 
+                            PreviewMouseUp="header_PreviewMouseUp"  
+                            PreviewMouseDown="header_PreviewMouseDown" 
+                            MouseLeave="header_MouseLeave"  
+                            MouseEnter="header_MouseEnter">
+
+                                <Label Name="labelMaxmin" 
+                               Content="&#9744;" 
+                               HorizontalAlignment="Center" 
+                               Margin="0,-1,0,0"  
+                               FontSize="14" 
+                               Foreground="White"/>
+
+                            </Border>
+
+                            <Border Name="roll" 
+                            Width="47" Height="29" 
+                            Background="#474A51" 
+                            PreviewMouseUp="header_PreviewMouseUp"  
+                            PreviewMouseDown="header_PreviewMouseDown" 
+                            MouseLeave="header_MouseLeave"  
+                            MouseEnter="header_MouseEnter">
+
+                                <Label Content="&#8211;" 
+                               HorizontalAlignment="Center" 
+                               Margin="0,-4,0,0"  
+                               FontSize="16" 
+                               Foreground="White"/>
+
+                            </Border>
+
+                            <Border>
+
+                                <Image Source="/Resources/stalin.jpg"/>
+
+                            </Border>
+
+                        </StackPanel>
+
+                        <Border Name="title" Width="30" Height="29" Margin="3,0">
+
+                            <Image Source="/Resources/employee_icon.ico.ico" />
+
+                        </Border>
+
+                        <Label Content="Управление сотрудниками" Foreground="White" 
+                       HorizontalAlignment="Left" FontSize="16" FontWeight="Bold"/>
+
+                    </DockPanel>
+
+                </Border>
+
+            </DockPanel>
+
+        </Border>
+
+        <!--#endregion-->
+
+        
+        <!--#region MENU -->
+
+        <GroupBox Grid.Row="1" Grid.Column="0" Header="Menu" 
+          Foreground="White" FontSize="30" Margin="10"
+          FontFamily="Bahnschrift SemiBold SemiCondensed">
+
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
+
+                <Border x:Name="btnProfile" Width="200" CornerRadius="10" ToolTip="Профиль"
+                BorderBrush="White" BorderThickness="2" Margin="0,0,0,10" 
+                MouseDown="borderClick_MouseDown" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave">
+
+                    <Label Content="Profile" Foreground="White" 
+                   HorizontalAlignment="Center"/>
+
+                </Border>
+
+                <Border x:Name="btnListEmployees" Width="200" CornerRadius="10" ToolTip="Сотрудники"
+                BorderBrush="White" BorderThickness="2" Margin="0,0,0,10" 
+                MouseDown="borderClick_MouseDown" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave">
+
+                    <Label Content="Employees" Foreground="White" 
+                   HorizontalAlignment="Center"/>
+
+                </Border>
+
+                <Border x:Name="btnSchedule" Width="200" CornerRadius="10" ToolTip="Расписание"
+                BorderBrush="White" BorderThickness="2" Margin="0,0,0,10" 
+                MouseDown="borderClick_MouseDown" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave">
+
+                    <Label Content="Schedule" Foreground="White" 
+                   HorizontalAlignment="Center"/>
+
+                </Border>
+
+                <Border x:Name="btnEvent" Width="200" CornerRadius="10" ToolTip="События"
+                BorderBrush="White" BorderThickness="2" Margin="0,0,0,10" 
+                MouseDown="borderClick_MouseDown" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave">
+
+                    <Label Content="Event" Foreground="White" 
+                   HorizontalAlignment="Center"/>
+
+                </Border>
+
+            </StackPanel>
+
+        </GroupBox>
+
+        <!--#endregion-->
+
+
+        <!--#region FRAME -->
+
+        <GroupBox Grid.Row="1" Grid.Column="1" x:Name="groupBoxMainFrame" Header="Profile"
+          Foreground="White" FontSize="30" Margin="10"
+          FontFamily="Bahnschrift SemiBold SemiCondensed">
+
+            <Border>
+
+                <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" 
+               Source="/Pages/ProfilePage.xaml"/>
+
+            </Border>
+
+        </GroupBox>
+
+        <!--#endregion-->
+
+    </Grid>
+</Window>
+
+
+<!--<DataGrid Background="Black" Grid.Row="1" x:Name="phonesGrid" 
+          AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray" 
+          RowBackground="LightGray" AlternatingRowBackground="White">
+    <DataGrid.Columns>
+        <DataGridTextColumn Header="Модель" Binding="{Binding Path=Title}" Width="100" MinWidth="100"/>
+        <DataGridHyperlinkColumn  Header="Компания" Binding="{Binding Path=Company}" Width="100" MinWidth="100" />
+        <DataGridTextColumn Header="Цена" Binding="{Binding Path=Price}" Width="100" MinWidth="100"/>
+    </DataGrid.Columns>
+</DataGrid>-->
